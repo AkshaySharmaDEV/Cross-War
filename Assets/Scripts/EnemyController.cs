@@ -21,19 +21,12 @@ public class EnemyController : MonoBehaviour{
     public float speed;
 
 
-
-    public float Hitpoints;
-    public float MaxHitpoints = 5;
+    public int collisionCount = 0;
 
 
-    
+    Vector3 localScale;
 
-    
-
-
-
-
-
+    public GameObject Indicator;
 
 
     // Start is called before the first frame update
@@ -43,7 +36,6 @@ public class EnemyController : MonoBehaviour{
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
 
-        
 
         
 
@@ -89,6 +81,9 @@ public class EnemyController : MonoBehaviour{
             timeBtwShots -= Time.deltaTime;
         }
 
+
+        
+
         
     }
     private void FixedUpdate() {
@@ -99,13 +94,48 @@ public class EnemyController : MonoBehaviour{
     }
 
 
-    private void OnCollisionEnter2D (Collider2D block) {
+    private void OnCollisionEnter2D(Collision2D collision) {
  
-        if (block.gameObject.tag == "Block") {
+        
 
-            Physics.IgnoreCollision(block.GetComponent<Collider>(), GetComponent<Collider>());
+        if (collision.gameObject.tag == "bullet" ){
+
+            collisionCount += 1;
+
+        }
+
+        if(collisionCount == 1){
+
+            
+            Indicator.transform.localScale = new Vector3(0.24f,0.11f,0f);
+            Debug.Log("1");
+
             
         }
+
+        if(collisionCount == 2){
+
+            
+            Indicator.transform.localScale = new Vector3(0.12f,0.11f,0f);
+            Debug.Log("2");
+
+            
+        }
+
+        
+        if(collisionCount == 3){
+
+            
+            Indicator.transform.localScale = new Vector3(0f,0.11f,0f);
+            Debug.Log("3");
+            Destroy(gameObject);
+            
+            
+
+            
+        }
+
+        
     }
  
 }

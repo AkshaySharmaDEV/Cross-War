@@ -11,6 +11,8 @@ public class Bullet : MonoBehaviour
 
     public GameObject bullet;
 
+    
+
 
     public float speed = 50.0f;
     // private Rigidbody2D rb;
@@ -19,20 +21,18 @@ public class Bullet : MonoBehaviour
     public GameObject explosion;
 
 
+    public int collisionCount = 0;
 
+    
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         
-        
+
 
     }
 
-    
-
-
-   
 
     void Update()
     {
@@ -57,10 +57,37 @@ public class Bullet : MonoBehaviour
 
         rb.velocity = direction * Mathf.Max(speed, 0f);
 
-        
+
         
 
-        if(collision.gameObject.tag == "enemy"){
+        
+        if (collision.gameObject.tag == "enemy" ){
+
+            collisionCount += 1;
+
+        }
+
+        if(collisionCount == 1){
+
+            
+            
+            // Debug.Log("1");
+
+            
+        }
+
+        if(collisionCount == 2){
+
+            
+            
+            // Debug.Log("2");
+
+            
+        }
+
+        
+        if(collisionCount == 3){
+
             GameObject e = Instantiate(explosion) as GameObject;
             e.transform.position = transform.position;
             Destroy(collision.gameObject);
@@ -68,7 +95,32 @@ public class Bullet : MonoBehaviour
             Destroy(e, 2f);
 
             
+            
+            
+            
+
+            
         }
+
+        
+       
+
+        
+
+        
+        
+
+        // if(collision.gameObject.tag == "enemy"){
+        //     GameObject e = Instantiate(explosion) as GameObject;
+        //     e.transform.position = transform.position;
+        //     Destroy(collision.gameObject);
+        //     Destroy(this.gameObject);
+        //     Destroy(e, 2f);
+
+
+
+            
+        // }
         // if(collision.gameObject.tag == "Player"){
         //     GameObject e = Instantiate(explosion) as GameObject;
         //     e.transform.position = transform.position;

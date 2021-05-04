@@ -14,20 +14,14 @@ public class PlayerController : MonoBehaviour
 
     
 
-    
-
-    public static float healthAmount;
-
     // Vector2 mousePos;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        healthAmount = 1;
-        rb = GetComponent<Rigidbody2D>();
-
         
+        rb = GetComponent<Rigidbody2D>();
 
 
         
@@ -46,9 +40,7 @@ public class PlayerController : MonoBehaviour
         
         transform.Rotate( 0f ,0f , SimpleInput.GetAxis("Rotate") * 5f, Space.Self );
         
-        if (healthAmount <= 0){
-            Destroy (gameObject);
-        }
+        
         // mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
         
     }
@@ -62,13 +54,7 @@ public class PlayerController : MonoBehaviour
         // rb.rotation = angle;
     }
 
-    void OnTriggerEnter2D(Collider2D col)
-    {
-        if (col.gameObject.name.Equals("Projectile"))
-        {
-            healthAmount -= 0.1f;
-        }
-    }
+    
 
     
 }
