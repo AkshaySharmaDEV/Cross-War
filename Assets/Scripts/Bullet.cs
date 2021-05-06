@@ -18,7 +18,7 @@ public class Bullet : MonoBehaviour
     // private Rigidbody2D rb;
     private Vector2 screenBounds;
 
-    public GameObject explosion;
+    // public GameObject explosion;
 
 
     public int collisionCount = 0;
@@ -50,56 +50,82 @@ public class Bullet : MonoBehaviour
 
 
 
-        var speed = lastVelocity.magnitude;
+        // var speed = lastVelocity.magnitude;
             
-        var direction = Vector3.Reflect(lastVelocity.normalized,collision.contacts[0].normal);
+        // var direction = Vector3.Reflect(lastVelocity.normalized,collision.contacts[0].normal);
 
 
-        rb.velocity = direction * Mathf.Max(speed, 0f);
+        // rb.velocity = direction * Mathf.Max(speed, 0f);
 
 
         
 
         
-        if (collision.gameObject.tag == "enemy" ){
+        // if (collision.gameObject.tag == "enemy" ){
 
-            collisionCount += 1;
+        //     collisionCount += 1;
 
-        }
+        // }
 
-        if(collisionCount == 1){
-
-            
-            
-            // Debug.Log("1");
-
-            
-        }
-
-        if(collisionCount == 2){
+        // if(collisionCount == 1){
 
             
             
-            // Debug.Log("2");
+        //     // Debug.Log("1");
 
             
-        }
+        // }
+
+        // if(collisionCount == 2){
+
+            
+            
+        //     // Debug.Log("2");
+
+            
+        // }
 
         
-        if(collisionCount == 3){
+        // if(collisionCount == 3){
 
-            GameObject e = Instantiate(explosion) as GameObject;
-            e.transform.position = transform.position;
-            Destroy(collision.gameObject);
-            Destroy(this.gameObject);
-            Destroy(e, 2f);
-
-            
-            
-            
-            
+        //     GameObject e = Instantiate(explosion) as GameObject;
+        //     e.transform.position = transform.position;
+        //     Destroy(collision.gameObject);
+        //     Destroy(this.gameObject);
+        //     Destroy(e, 2f);
 
             
+            
+            
+            
+
+            
+        // }
+
+
+        switch (collision.gameObject.tag)
+        {
+            // //try avoiding to search for too many objects during collision
+            // case "bullet":
+            //     //Setting gameobject inactive is way better than destroying it everytime it collides with some other
+            //     collision.gameObject.SetActive(false);
+            //     gameObject.SetActive(false);
+            //     break;
+            // case "Player":
+            //     gameObject.SetActive(false);
+            //     break;
+            // case "enemy":
+            //     gameObject.SetActive(false);
+            //     GameObject e = Instantiate(explosion) as GameObject;
+            //     e.transform.position = transform.position;
+            //     Destroy(e, 2f);
+            //     break;
+            case "Block":
+                var speed = lastVelocity.magnitude;
+                // GetComponent<Rigidbody2D>().velocity = Vector2.Reflect(lastVelocity, collision.contacts[0].normal);
+                var direction = Vector3.Reflect(lastVelocity.normalized,collision.contacts[0].normal);
+                rb.velocity = direction * Mathf.Max(speed, 0f);
+                break;
         }
 
         

@@ -133,7 +133,6 @@ GameObject:
   m_Component:
   - component: {fileID: 446511600}
   - component: {fileID: 446511599}
-  - component: {fileID: 446511598}
   m_Layer: 0
   m_Name: MinimapCamera
   m_TagString: Untagged
@@ -141,14 +140,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &446511598
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 446511597}
-  m_Enabled: 1
 --- !u!20 &446511599
 Camera:
   m_ObjectHideFlags: 0
@@ -277,7 +268,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.18431371, g: 1, b: 0.51035357, a: 0}
+  m_BackGroundColor: {r: 0.36792985, g: 0.6415094, b: 0.31107154, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -799,7 +790,6 @@ GameObject:
   - component: {fileID: 1240058556}
   - component: {fileID: 1240058555}
   - component: {fileID: 1240058554}
-  - component: {fileID: 1240058557}
   - component: {fileID: 1240058553}
   m_Layer: 5
   m_Name: Canvas
@@ -896,18 +886,53 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1240058557
+--- !u!1 &1274495971
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1274495973}
+  - component: {fileID: 1274495972}
+  m_Layer: 0
+  m_Name: EnemySpawn1
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1274495972
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1240058552}
+  m_GameObject: {fileID: 1274495971}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d58fd2f4a8bcc134ba05be0d0d070960, type: 3}
+  m_Script: {fileID: 11500000, guid: 1c40ccc7a877f52449d2fe02f0f8c9d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemy: {fileID: 3729481109979547834, guid: 4fa4b7076249a87458c1263e31a81e91, type: 3}
+  SpawnPoint: {fileID: 1274495973}
+  spawnRate: 10
+  nextSpawn: 10
+--- !u!4 &1274495973
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1274495971}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 14.66, y: 7.31, z: -41.871227}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1341216274
 GameObject:
   m_ObjectHideFlags: 0
@@ -1009,7 +1034,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 319.22, y: -328}
+  m_AnchoredPosition: {x: 319.21997, y: -328}
   m_SizeDelta: {x: 400, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1367982408
@@ -1087,11 +1112,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1439608034}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c40ccc7a877f52449d2fe02f0f8c9d9, type: 3}
+  m_Script: {fileID: 11500000, guid: f4373060047aa8340bad2cc97aee3b1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 3729481109979547834, guid: 4fa4b7076249a87458c1263e31a81e91, type: 3}
-  spawnRate: 10
+  offset: 0
+  xoffset: 0
 --- !u!1 &1613395580 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1531213445540486, guid: e0815e227ed46e445b99930271e8942c, type: 3}
@@ -1862,6 +1887,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3502659013694090695, guid: 78d09d5b18d2ec347ba55781cc430df9, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3502659013694090695, guid: 78d09d5b18d2ec347ba55781cc430df9, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3502659013694090695, guid: 78d09d5b18d2ec347ba55781cc430df9, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3502659015015322625, guid: 78d09d5b18d2ec347ba55781cc430df9, type: 3}
       propertyPath: m_Name
       value: Player

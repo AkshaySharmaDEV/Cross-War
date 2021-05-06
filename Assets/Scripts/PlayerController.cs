@@ -39,19 +39,26 @@ public class PlayerController : MonoBehaviour
 
         
         transform.Rotate( 0f ,0f , SimpleInput.GetAxis("Rotate") * 5f, Space.Self );
+
+        rb.MovePosition(rb.position + moveVelocity * Time.fixedDeltaTime);
+
         
         
         // mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
         
     }
 
-    void FixedUpdate(){
+    // void FixedUpdate(){
 
-        rb.MovePosition(rb.position + moveVelocity * Time.fixedDeltaTime);
+        
 
-        // Vector2 lookDir = mousePos - rb.position;
-        // float angle = Mathf.Atan2(lookDir.y, lookDir.x)* Mathf.Rad2Deg - 90f;
-        // rb.rotation = angle;
+    //     // Vector2 lookDir = mousePos - rb.position;
+    //     // float angle = Mathf.Atan2(lookDir.y, lookDir.x)* Mathf.Rad2Deg - 90f;
+    //     // rb.rotation = angle;
+    // }
+    void LateUpdate()
+    {
+
     }
 
     
