@@ -6,6 +6,7 @@ public class healthProperty : MonoBehaviour
     //This script will give object the health property attached to it
     public static healthProperty instance;
     public float Health, Damage;
+    float newHealth;
     public string OncollisionWithTag;
 
     private void Awake()
@@ -14,7 +15,11 @@ public class healthProperty : MonoBehaviour
     }
     private void OnEnable()
     {
-        
+        if (Health <= 0)
+        {
+            Health = newHealth;
+        }
+        else newHealth = Health;   
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
