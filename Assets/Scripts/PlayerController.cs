@@ -12,19 +12,13 @@ public class PlayerController : MonoBehaviour
 
     private Vector2 moveVelocity;
 
-    
-
     // Vector2 mousePos;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
-        rb = GetComponent<Rigidbody2D>();
-
-
-        
+        rb = GetComponent<Rigidbody2D>();        
     }
 
     // Update is called once per frame
@@ -32,34 +26,12 @@ public class PlayerController : MonoBehaviour
     {
 
         Vector2 moveInput = new Vector2(SimpleInput.GetAxis("Horizontal"), SimpleInput.GetAxis("Vertical"));
-        moveVelocity = moveInput.normalized * speed;
-
-
-
-
-        
+        moveVelocity = moveInput.normalized * speed;      
         transform.Rotate( 0f ,0f , SimpleInput.GetAxis("Rotate") * 5f, Space.Self );
-
-        rb.MovePosition(rb.position + moveVelocity * Time.fixedDeltaTime);
-
-        
-        
-        // mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+        rb.MovePosition(rb.position + moveVelocity * Time.deltaTime);
         
     }
-
-    // void FixedUpdate(){
-
-        
-
-    //     // Vector2 lookDir = mousePos - rb.position;
-    //     // float angle = Mathf.Atan2(lookDir.y, lookDir.x)* Mathf.Rad2Deg - 90f;
-    //     // rb.rotation = angle;
-    // }
-    void LateUpdate()
-    {
-
-    }
+    
 
     
 

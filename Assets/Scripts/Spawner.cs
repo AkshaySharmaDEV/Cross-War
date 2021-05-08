@@ -15,22 +15,27 @@ public class Spawner : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        
     }
-
+    private void Start()
+    {
+        SpawnObjectNo = new List<GameObject>();
+    }
     // Update is called once per frame
     void Update()
     {
         timer += Time.deltaTime;
         //Spawn objects on screen because there's no object on screen
-        if (timer > SpawnTime && SpawnObjectNo.Capacity < SpawnLimit)
+        if (timer > SpawnTime && SpawnObjectNo.Count < SpawnLimit)
         {
             SpawnGameObject(SpawnObject, i);
+            timer = 0;
             i++;
         }
         //Activate the inactive objects which were already created
-        if (timer > SpawnTime && SpawnObjectNo.Capacity==SpawnLimit)
+        if (timer > SpawnTime && SpawnObjectNo.Count == SpawnLimit)
         {
-            for (int i = 0; i < SpawnObjectNo.Capacity; i++)
+            for (int i = 0; i < SpawnObjectNo.Count; i++)
             {
                 if (!SpawnObjectNo[i].activeSelf)
                 {
@@ -44,8 +49,8 @@ public class Spawner : MonoBehaviour
 
     }
 
-   void SpawnGameObject(GameObject bot,int i)
+    void SpawnGameObject(GameObject bot, int i)
     {
-        SpawnObjectNo[i] = Instantiate(bot, transform.position, Quaternion.identity);
+        SpawnObjectNo.Add(Instantiate(bot, transform.position, Quaternion.identity));
     }
 }

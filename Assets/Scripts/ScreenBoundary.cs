@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class ScreenBoundary : MonoBehaviour
 {
+    public Transform Player;
     public static float x, y;
     Camera cam;
     EdgeCollider2D edge;
@@ -19,6 +20,10 @@ public class ScreenBoundary : MonoBehaviour
     {
         FindBoundries();
         SetBoundaries();
+    }
+    private void LateUpdate()
+    {
+        transform.position = Player.position;
     }
     void SetBoundaries()
     {
