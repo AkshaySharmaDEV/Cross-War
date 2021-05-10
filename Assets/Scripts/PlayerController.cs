@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
 
         Vector2 moveInput = new Vector2(SimpleInput.GetAxis("Horizontal"), SimpleInput.GetAxis("Vertical"));
         moveVelocity = moveInput.normalized * speed;      
-        transform.Rotate( 0f ,0f , SimpleInput.GetAxis("Rotate") * 5f, Space.Self );
+        
         rb.MovePosition(rb.position + moveVelocity * Time.deltaTime);
         
     }

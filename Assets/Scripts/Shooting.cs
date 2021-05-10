@@ -10,6 +10,8 @@ public class Shooting : MonoBehaviour
     public int bulletCapacity;
     public float bulletForce = 20f;
 
+    public float sec = 1f;
+
 
     int i;
     List<GameObject> BulletNo;
@@ -28,8 +30,9 @@ public class Shooting : MonoBehaviour
         Shoot();
 
     }
-    void Shoot()
+    public void Shoot()
     {
+
         //Spawn objects on screen because there's no object on screen
         if (BulletNo.Count < bulletCapacity)
         {
@@ -41,15 +44,30 @@ public class Shooting : MonoBehaviour
         {
             for (int i = 0; i < BulletNo.Count; i++)
             {
+                
                 if (!BulletNo[i].activeSelf)
                 {
                     BulletNo[i].transform.position = transform.position; //Position of object back to spawn site
                     BulletNo[i].SetActive(true); //Setting it true means it's respawned
-                    BulletNo[i].GetComponent<Rigidbody2D>().AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
+                    
+                    // BulletNo[i].GetComponent<Rigidbody2D>().AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
                     break;
                 }
             }
         }
+
+
+    }
+
+    IEnumerator LateCall()
+    {
+
+        yield return new WaitForSeconds(sec);
+
+        
+
+        
+        
 
     }
 
